@@ -16,7 +16,7 @@ export default function Dashboard() {
   return (
     <div className="flex flex-col mt-1  bg-gray-100  dark:bg-gray-900">
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto p-4">
+      <main className="flex-1 overflow-y-auto p-4 ">
         <div className="max-w-4xl mx-auto space-y-4">
           {/* Balance Card */}
           <div className="flex justify-center items-center mt-2 mx-auto h-10 w-48 border-2 border-blue-600 rounded-full hover:bg-blue-600/10 transition-colors hover:text-slate-100 hover:cursor-pointer ">
@@ -26,7 +26,10 @@ export default function Dashboard() {
           </div>
 
           {/* Quick Actions */}
-          <Card className="grid  grid-cols-2 sm:grid-cols-4 gap-4 items-center justify-center">
+          <Card
+            className="grid  grid-cols-2 sm:grid-cols-4 gap-4 items-center justify-center 
+          "
+          >
             {cards?.map((c) => (
               <div
                 key={c.label}

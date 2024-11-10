@@ -57,6 +57,9 @@
   }
 }
 @layer base {
+  html {
+    @apply !font-signika;
+  }
   * {
     @apply border-border;
   }
