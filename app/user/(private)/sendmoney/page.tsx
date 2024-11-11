@@ -3,7 +3,7 @@ import AmountInput from "@/components/AmountInput";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import sendMoneySchema from "@/schemas/sendMoneySchema";
+import sendMoneyInput from "@/schemas/sendMoneyInput";
 
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -18,7 +18,7 @@ const SendMoney = () => {
   //   amount: number;
   //   pin: number;
   // }
-  type sendMoneyType = z.infer<typeof sendMoneySchema>;
+  type sendMoneyType = z.infer<typeof sendMoneyInput>;
 
   const submitHandler = (data: sendMoneyType) => {
     console.log(data);
