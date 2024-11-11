@@ -11,7 +11,7 @@ import { z } from "zod";
 
 const CashOut = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<sendMoneyType>();
 
   // interface sendMoneyType {
   //   number: number;
@@ -26,7 +26,6 @@ const CashOut = () => {
 
   return (
     <div className="flex flex-col justify-center space-y-3 mx-2 my-4 md:max-w-md md:mx-auto">
-      {/*  TODO: Fix this */}
       <form onSubmit={handleSubmit(submitHandler)}>
         <div className="flex flex-col justify-center items-center space-y-2 ">
           <h2 className="text-xl font-semibold text-blue-600">Cashout</h2>
