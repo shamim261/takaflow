@@ -3,7 +3,9 @@ import { Label } from "./ui/label";
 const AmountInput = (props: any) => {
   return (
     <>
-      <Label htmlFor="amount">Amount</Label>
+      <Label htmlFor="amount" className="my-2">
+        Amount
+      </Label>
       <input
         required
         {...props}
