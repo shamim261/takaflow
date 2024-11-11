@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Transactions = () => {
   return (
-    <div className="my-4 mx-2">
+    <div className="my-4 mx-2 md:max-w-xl md:mx-auto">
       <Card>
         <CardHeader>
           <CardTitle className="text-center">All Transactions</CardTitle>
