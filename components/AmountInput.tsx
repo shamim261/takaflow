@@ -1,10 +1,12 @@
 import { Label } from "./ui/label";
 
-const AmountInput = () => {
+const AmountInput = (props: any) => {
   return (
     <>
       <Label htmlFor="amount">Amount</Label>
       <input
+        required
+        {...props}
         id="amount"
         placeholder="0"
         type="number"
