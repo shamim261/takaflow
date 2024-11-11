@@ -128,31 +128,39 @@ const Layout = ({ children }: PropsWithChildren) => {
               </Button>
             </Link>
           </li>
-          <li>
-            <Button variant="ghost" className="w-full justify-start">
-              <CreditCard className="mr-2 h-4 w-4" />
-              Cash In
-            </Button>
-          </li>
-          <li>
-            <Button variant="ghost" className="w-full justify-start">
-              <CreditCard className="mr-2 h-4 w-4" />
-              Cash Out
-            </Button>
-          </li>
-          <li>
-            <Button variant="ghost" className="w-full justify-start">
-              <CreditCard className="mr-2 h-4 w-4" />
-              Transaction History
-            </Button>
-          </li>
+          <Link href={"/user/cashout"}>
+            <li>
+              <Button variant="ghost" className="w-full justify-start">
+                <CreditCard className="mr-2 h-4 w-4" />
+                Cash Out
+              </Button>
+            </li>
+          </Link>
+          <Link href={"/user/cashin"}>
+            <li>
+              <Button variant="ghost" className="w-full justify-start">
+                <CreditCard className="mr-2 h-4 w-4" />
+                Cash In
+              </Button>
+            </li>
+          </Link>
+          <Link href={"/user/transactions"}>
+            <li>
+              <Button variant="ghost" className="w-full justify-start">
+                <CreditCard className="mr-2 h-4 w-4" />
+                Transaction History
+              </Button>
+            </li>
+          </Link>
 
-          <li>
-            <Button variant="ghost" className="w-full justify-start">
-              <User className="mr-2 h-4 w-4" />
-              Profile
-            </Button>
-          </li>
+          <Link href={"/user/profile"}>
+            <li>
+              <Button variant="ghost" className="w-full justify-start">
+                <User className="mr-2 h-4 w-4" />
+                Profile
+              </Button>
+            </li>
+          </Link>
         </ul>
       </nav>
     </div>
