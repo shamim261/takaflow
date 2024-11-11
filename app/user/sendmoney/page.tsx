@@ -9,17 +9,29 @@ const SendMoney = () => {
   return (
     <div className="flex flex-col justify-center space-y-3 mx-2 my-4 md:max-w-md md:mx-auto">
       <div className="flex flex-col justify-center items-center space-y-2 ">
-        <Label className="text-md w-full" htmlFor="agentNo">
+        <h2 className="text-xl font-semibold text-blue-600">Send Money</h2>
+
+        <Label className="text-sm w-full" htmlFor="agentNo">
           Enter Receipt Number:
         </Label>
-        <Input className="" type="tel" id="agentNo" />
+        <Input
+          placeholder="Enter Number"
+          className=""
+          type="tel"
+          id="agentNo"
+        />
       </div>
       <div className="flex flex-col justify-center items-center space-y-4 ">
-        <Label id="amount">Amount</Label>
         <AmountInput />
+        <Input
+          type="password"
+          placeholder="Enter PIN"
+          className="text-center border-slate-300"
+        />
         <Button
+          size={"lg"}
           onClick={() => router.push("/user/confirm")}
-          className="bg-blue-600 hover:bg-blue-700"
+          className="bg-blue-600 hover:bg-blue-700 w-full text-md "
         >
           Send Money
         </Button>
