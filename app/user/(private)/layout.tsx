@@ -20,16 +20,25 @@ import {
 import { CreditCard, Home, LogOut, Menu, User, Wallet } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { PropsWithChildren } from "react";
+import { useRouter } from "next/navigation";
+import { PropsWithChildren, useState } from "react";
 
 const Layout = ({ children }: PropsWithChildren) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const router = useRouter();
+
+  const handleSheetClick = (to: string) => {
+    toggleMobileMenu();
+    router.push(to);
+  };
   return (
     <div className="bg-gray-100">
       {/* Header */}
       <header className="p-4 bg-white dark:bg-gray-800 shadow-md">
         <div className="flex items-center justify-between md:me-10">
           <div className="flex items-center justify-end space-x-2 ">
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={toggleMobileMenu}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
                   <Menu size={48} />
@@ -43,31 +52,53 @@ const Layout = ({ children }: PropsWithChildren) => {
                   </SheetDescription>
                 </SheetHeader>
                 <div className="grid gap-4 py-4">
-                  <Link href={"/user/dashboard"}>
-                    <Button variant="ghost" className="justify-start">
-                      <Home className="mr-2 h-4 w-4" />
-                      Dashboard
-                    </Button>
-                  </Link>
-                  <Link href={"/user/sendmoney"}>
-                    <Button variant="ghost" className="justify-start">
-                      <Wallet className="mr-2 h-4 w-4" />
-                      Send Money
-                    </Button>
-                  </Link>
-                  <Button variant="ghost" className="justify-start">
+                  <Button
+                    onClick={() => handleSheetClick("/user/dashboard")}
+                    variant="ghost"
+                    className="justify-start"
+                  >
+                    <Home className="mr-2 h-4 w-4" />
+                    Dashboard
+                  </Button>
+
+                  <Button
+                    onClick={() => handleSheetClick("/user/sendmoney")}
+                    variant="ghost"
+                    className="justify-start"
+                  >
+                    <Wallet className="mr-2 h-4 w-4" />
+                    Send Money
+                  </Button>
+
+                  <Button
+                    onClick={() => handleSheetClick("/user/cashout")}
+                    variant="ghost"
+                    className="justify-start"
+                  >
                     <CreditCard className="mr-2 h-4 w-4" />
                     Cash Out
                   </Button>
-                  <Button variant="ghost" className="justify-start">
+                  <Button
+                    onClick={() => handleSheetClick("/user/cashin")}
+                    variant="ghost"
+                    className="justify-start"
+                  >
                     <CreditCard className="mr-2 h-4 w-4" />
                     Cash In
                   </Button>
-                  <Button variant="ghost" className="justify-start">
+                  <Button
+                    onClick={() => handleSheetClick("/user/transactions")}
+                    variant="ghost"
+                    className="justify-start"
+                  >
                     <User className="mr-2 h-4 w-4" />
                     Transaction History
                   </Button>
-                  <Button variant="ghost" className="justify-start">
+                  <Button
+                    onClick={() => handleSheetClick("/user/profile")}
+                    variant="ghost"
+                    className="justify-start"
+                  >
                     <User className="mr-2 h-4 w-4" />
                     Profile
                   </Button>

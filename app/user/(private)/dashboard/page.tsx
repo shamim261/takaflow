@@ -1,4 +1,3 @@
-"use client";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ListAltIcon from "@mui/icons-material/ListAlt";
@@ -6,13 +5,9 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import { SendIcon } from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
 
 export default function Dashboard() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
   return (
     <div className="flex flex-col mt-1  bg-gray-100  dark:bg-gray-900">
       {/* Main Content */}
@@ -31,13 +26,12 @@ export default function Dashboard() {
           "
           >
             {cards?.map((c) => (
-              <div
-                key={c.label}
-                className="my-2 flex flex-col items-center h-20 hover:cursor-pointer"
-              >
-                {c.icon}
-                <p className="font-medium">{c.label}</p>
-              </div>
+              <Link href={`${c.link}`} key={c.label}>
+                <div className="my-2 flex flex-col items-center h-20 hover:cursor-pointer">
+                  {c.icon}
+                  <p className="font-medium">{c.label}</p>
+                </div>
+              </Link>
             ))}
           </Card>
 
@@ -78,12 +72,14 @@ export default function Dashboard() {
 const cards = [
   {
     label: "Send Money",
+    link: "/user/sendmoney",
     icon: (
       <SendIcon size="30" color="#2563eb" fontSize="large" className="my-2" />
     ),
   },
   {
     label: "Cash Out",
+    link: "/user/cashout",
     icon: (
       <CurrencyExchangeIcon
         // size="30"
@@ -94,10 +90,12 @@ const cards = [
   },
   {
     label: "Cash In",
+    link: "/user/cashin",
     icon: <AddCardIcon fontSize="large" className="my-2 text-blue-600" />,
   },
   {
     label: "Transaction History",
+    link: "/user/transactions",
     icon: <ListAltIcon fontSize="large" className="my-2 text-blue-600" />,
   },
 ];
