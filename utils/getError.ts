@@ -1,4 +1,4 @@
-import { ErrorMessage } from "@/app/user/(auth)/signup/page";
+import { ErrorMessage } from "@/types";
 import { AxiosError } from "axios";
 
 const getError = (error: AxiosError<ErrorMessage>): string | undefined => {
