@@ -18,8 +18,8 @@ const SendMoney = () => {
   //   amount: number;
   //   pin: number;
   // }
-  type sendMoneyType = z.infer<typeof sendMoneyInput>;
 
+  type sendMoneyType = z.infer<typeof sendMoneyInput>;
   const submitHandler = (data: sendMoneyType) => {
     console.log(data);
   };
