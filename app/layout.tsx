@@ -1,3 +1,4 @@
+import QueryProvider from "@/providers/QueryProvider";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
@@ -24,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${signika.variable} !font-signika antialiased`}>
-        <Theme>{children}</Theme>
+        <QueryProvider>
+          <Theme>{children}</Theme>
+        </QueryProvider>
       </body>
     </html>
   );
