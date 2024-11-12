@@ -81,11 +81,7 @@ const cards = [
     label: "Cash Out",
     link: "/user/cashout",
     icon: (
-      <CurrencyExchangeIcon
-        // size="30"
-        fontSize="large"
-        className="my-2 text-blue-600"
-      />
+      <CurrencyExchangeIcon fontSize="large" className="my-2 text-blue-600" />
     ),
   },
   {
