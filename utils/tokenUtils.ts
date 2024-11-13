@@ -44,3 +44,10 @@ export const generateToken = ({
 export const isValidToken = (token: string) => {
   return jwt.verify(token, process.env.JWT_SECRET!);
 };
+
+export const isTokenExpired = (token: string) => {
+  if (!token) return true;
+  const payload = JSON.parse(atob(token.split(".")[1]));
+  const currentTime = Date.now() / 1000; // Current time in seconds
+  return payload.exp < currentTime;
+};
