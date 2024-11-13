@@ -33,7 +33,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         };
         const response = NextResponse.json({ userObj });
 
-        response.cookies.set("auth-token", token!, {
+        response.cookies.set(process.env.COOKIE_NAME!, token!, {
           maxAge: 604800, // 7 days
           httpOnly: true,
         });
