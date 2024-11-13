@@ -1,19 +1,41 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: object = {
+interface userInfoType {
+  name: string;
+  email: string;
+  phone: string;
+  role: "user" | "agent" | "admin";
+  isAdmin: boolean;
+  token: string;
+}
+
+const initialState: { userInfo: userInfoType | null } = {
   userInfo:
     typeof window !== "undefined"
       ? JSON.parse(localStorage.getItem("userInfo")!)
-      : null, // {{ edit_1 }}
+      : null,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (state, action) => {},
-    logout: (state, action) => {},
+    login: (state, action) => {
+      state.userInfo = action.payload;
+      if (typeof window !== undefined) {
+        localStorage.setItem("userInfo", JSON.stringify(action.payload));
+      }
+    },
+    logout: (state, action) => {
+      state.userInfo = null;
+      if (
+        typeof window !== undefined &&
+        JSON.parse(localStorage.getItem("userInfo")!)
+      ) {
+        localStorage.removeItem("userInfo");
+      }
+    },
   },
 });
 

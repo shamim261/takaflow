@@ -3,14 +3,17 @@ import ErrorComponent from "@/components/ErrorComponent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { login } from "@/redux/slices/userSlice";
 import userLoginInput from "@/schemas/userLoginInput";
 import { ErrorMessage, userLoginType } from "@/types";
 import getError from "@/utils/getError";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 const UserLoginForm = () => {
   const [error, setError] = useState<string | undefined>();
@@ -21,6 +24,8 @@ const UserLoginForm = () => {
   } = useForm<userLoginType>({
     resolver: zodResolver(userLoginInput),
   });
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const submitHandler: SubmitHandler<userLoginType> = async (formData) => {
     setError("");
@@ -28,8 +33,22 @@ const UserLoginForm = () => {
       const { data } = await axios.post("/api/user/login", {
         ...formData,
       });
-      console.log("Logged In Successfully!");
+
+      if (data.status === "pending") {
+        setError("Your account is still pending!");
+      }
+      let userObject = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        role: data.role,
+        isAdmin: data.isAdmin,
+        token: data.token,
+      };
+      dispatch(login({ ...userObject }));
+      router.push("/user/dashboard");
     } catch (err) {
+      console.log(err);
       if (err instanceof AxiosError) {
         const error = err as AxiosError<ErrorMessage>;
         setError(getError(error));
