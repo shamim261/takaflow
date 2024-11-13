@@ -17,20 +17,29 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { logout } from "@/redux/slices/userSlice";
+import axios from "axios";
 import { CreditCard, Home, LogOut, Menu, User, Wallet } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { PropsWithChildren, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Layout = ({ children }: PropsWithChildren) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleSheetClick = (to: string) => {
     toggleMobileMenu();
     router.push(to);
+  };
+  const handleLogOut = async () => {
+    await axios.get("/api/user/logout");
+    dispatch(logout());
+    router.push("/user/login");
   };
   return (
     <div className="bg-gray-100">
@@ -125,10 +134,12 @@ const Layout = ({ children }: PropsWithChildren) => {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push("/user/profile")}>
+                Profile
+              </DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogOut}>
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Log out</span>
               </DropdownMenuItem>

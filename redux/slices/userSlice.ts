@@ -27,7 +27,7 @@ const userSlice = createSlice({
         localStorage.setItem("userInfo", JSON.stringify(action.payload));
       }
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.userInfo = null;
       if (
         typeof window !== undefined &&
