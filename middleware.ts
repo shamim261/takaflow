@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const user = "";
+  const user = "m";
 
   if (!user) {
     return NextResponse.redirect(new URL("/", req.url));
