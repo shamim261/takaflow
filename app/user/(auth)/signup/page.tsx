@@ -1,7 +1,13 @@
+import isAuth from "@/utils/isAuth";
+import { redirect } from "next/navigation";
 import { Toaster } from "react-hot-toast";
 import SignupUserForm from "./SignupUserForm";
 
-const Signup = () => {
+const Signup = async () => {
+  const user = await isAuth();
+  if (user) {
+    redirect("/user/dashboard");
+  }
   return (
     <div className="font-signika  my-4 md:max-w-xl md:mx-auto">
       <Toaster />

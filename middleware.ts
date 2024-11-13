@@ -1,6 +1,7 @@
+import isAuth from "@/utils/isAuth";
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   // Avoiding login and register paths
   const authPrefixes = ["/user/login", "/user/signup"];
   const { pathname } = req.nextUrl;
@@ -8,9 +9,10 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const user = "m";
+  const userInfo = await isAuth();
+  console.log(userInfo);
 
-  if (!user) {
+  if (!userInfo) {
     return NextResponse.redirect(new URL("/", req.url));
   }
   return NextResponse.next();
