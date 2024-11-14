@@ -26,7 +26,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       const isMatch = await bcrypt.compare(pin, user.hashedPin);
 
       if (isMatch) {
-        const token = generateToken(user);
+        const token = await generateToken(user);
         const { _id, name, email, phone, role, isAdmin } = user;
         let userObj = {
           id: _id,

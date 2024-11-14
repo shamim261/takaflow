@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-// const jwt = require("jsonwebtoken");
+import { decodeJwt, jwtVerify, SignJWT } from "jose";
+import encoder from "./encoder";
 
 export interface tokenDataTypes {
   _id: string;
@@ -10,7 +10,7 @@ export interface tokenDataTypes {
   isAdmin: boolean;
 }
 
-export const generateToken = ({
+export const generateToken = async ({
   _id,
   name,
   email,
@@ -18,7 +18,7 @@ export const generateToken = ({
   role,
   isAdmin,
 }: tokenDataTypes) => {
-  const secret = "XdJzbcCjLnLoXzHS645odEe";
+  const secret = encoder(process.env.JWT_SECRET!);
   const userObj = {
     _id,
     name,
@@ -30,9 +30,13 @@ export const generateToken = ({
 
   if (secret) {
     try {
-      return jwt.sign(userObj, secret.toString(), {
-        expiresIn: "7d", // customize based on your requirement
-      });
+      const token = await new SignJWT(userObj)
+        .setProtectedHeader({ alg: "HS256" })
+        .setIssuedAt()
+        .setExpirationTime("7d")
+        .sign(secret);
+
+      return token;
     } catch (error) {
       console.log(error);
     }
@@ -41,13 +45,30 @@ export const generateToken = ({
   }
 };
 
-export const isValidToken = (token: string) => {
-  return jwt.verify(token, process.env.JWT_SECRET!);
+export const isValidToken = async (token: string) => {
+  try {
+    const { payload } = await jwtVerify(
+      token,
+      encoder(process.env.JWT_SECRET!)
+    );
+    if (payload) {
+      return true;
+    }
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };
 
 export const isTokenExpired = (token: string) => {
-  if (!token) return true;
-  const payload = JSON.parse(atob(token.split(".")[1]));
-  const currentTime = Date.now() / 1000; // Current time in seconds
-  return payload.exp < currentTime;
+  const { exp } = decodeJwt(token);
+
+  // If there's no expiration (`exp`), consider it expired
+  if (!exp) {
+    return true;
+  }
+
+  // Compare `exp` with the current timestamp
+  const currentTimestamp = Math.floor(Date.now() / 1000); // seconds
+  return exp < currentTimestamp;
 };
