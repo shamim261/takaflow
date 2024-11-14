@@ -38,8 +38,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
           token: token,
         };
 
-        console.log(userObj);
-
         const response = NextResponse.json(userObj);
 
         response.cookies.set(process.env.COOKIE_NAME!, token!, {
