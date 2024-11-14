@@ -24,7 +24,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { PropsWithChildren, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Layout = ({ children }: PropsWithChildren) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,6 +41,10 @@ const Layout = ({ children }: PropsWithChildren) => {
     dispatch(logout());
     router.push("/user/login");
   };
+  const state = useSelector((state) => state.user);
+  const user = state;
+  console.log(user);
+
   return (
     <div className="bg-gray-100">
       {/* Header */}

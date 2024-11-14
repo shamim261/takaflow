@@ -27,11 +27,20 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
       if (isMatch) {
         const token = generateToken(user);
-        const userObj = {
-          ...user,
-          token,
+        const { _id, name, email, phone, role, isAdmin } = user;
+        let userObj = {
+          id: _id,
+          name,
+          email,
+          phone,
+          role,
+          isAdmin,
+          token: token,
         };
-        const response = NextResponse.json({ userObj });
+
+        console.log(userObj);
+
+        const response = NextResponse.json(userObj);
 
         response.cookies.set(process.env.COOKIE_NAME!, token!, {
           maxAge: 604800, // 7 days

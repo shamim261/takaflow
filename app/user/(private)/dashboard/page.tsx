@@ -13,6 +13,7 @@ export default function Dashboard() {
           {/* Balance Card */}
           <div className="flex justify-center items-center mt-2 mx-auto h-10 w-48 border-2 border-blue-600 rounded-full hover:bg-blue-600/10 transition-colors hover:text-slate-100 hover:cursor-pointer ">
             <h1 className="text-center font-semibold text-blue-600">
+              {/* TODO: Add API call */}
               Check Balance
             </h1>
           </div>
