@@ -18,6 +18,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { logout } from "@/redux/slices/userSlice";
+import { selectorStateType } from "@/types";
 import axios from "axios";
 import { CreditCard, Home, LogOut, Menu, User, Wallet } from "lucide-react";
 import Image from "next/image";
@@ -41,9 +42,8 @@ const Layout = ({ children }: PropsWithChildren) => {
     dispatch(logout());
     router.push("/user/login");
   };
-  const state = useSelector((state) => state.user);
-  const user = state;
-  console.log(user);
+  const state = useSelector((state: selectorStateType) => state.user);
+  const user = state.userInfo;
 
   return (
     <div className="bg-gray-100">
@@ -59,7 +59,7 @@ const Layout = ({ children }: PropsWithChildren) => {
               </SheetTrigger>
               <SheetContent side="left">
                 <SheetHeader>
-                  <SheetTitle>Shamim Reza</SheetTitle>
+                  <SheetTitle>Welcome, {user.name}</SheetTitle>
                   <SheetDescription>
                     Access your account settings and more.
                   </SheetDescription>
@@ -131,7 +131,9 @@ const Layout = ({ children }: PropsWithChildren) => {
               <Button variant="ghost" size="icon">
                 <Avatar>
                   <AvatarImage src="/placeholder-user.jpg" alt="@user" />
-                  <AvatarFallback>U</AvatarFallback>
+                  <AvatarFallback>
+                    {user.name.split(" ")[0].toUpperCase().charAt(0)}
+                  </AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>

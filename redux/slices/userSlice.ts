@@ -1,15 +1,6 @@
 "use client";
+import { userInfoType } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
-
-interface userInfoType {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  role: "user" | "agent" | "admin";
-  isAdmin: boolean;
-  token: string;
-}
 
 const initialState: { userInfo: userInfoType | null } = {
   userInfo:
