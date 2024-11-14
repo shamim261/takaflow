@@ -1,10 +1,7 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ListAltIcon from "@mui/icons-material/ListAlt";
 
-import AddCardIcon from "@mui/icons-material/AddCard";
-import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import { SendIcon } from "lucide-react";
+import { Banknote, CirclePlus, ClipboardList, SendIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function Dashboard() {
@@ -27,7 +24,7 @@ export default function Dashboard() {
           >
             {cards?.map((c) => (
               <Link href={`${c.link}`} key={c.label}>
-                <div className="my-2 flex flex-col items-center h-20 hover:cursor-pointer">
+                <div className="my-2 flex flex-col justify-center items-center h-20 hover:cursor-pointer ">
                   {c.icon}
                   <p className="font-medium">{c.label}</p>
                 </div>
@@ -81,17 +78,26 @@ const cards = [
     label: "Cash Out",
     link: "/user/cashout",
     icon: (
-      <CurrencyExchangeIcon fontSize="large" className="my-2 text-blue-600" />
+      <Banknote size="40" color="#2563eb" fontSize="large" className="my-1" />
     ),
   },
   {
     label: "Cash In",
     link: "/user/cashin",
-    icon: <AddCardIcon fontSize="large" className="my-2 text-blue-600" />,
+    icon: (
+      <CirclePlus size="35" color="#2563eb" fontSize="large" className="my-1" />
+    ),
   },
   {
     label: "Transaction History",
     link: "/user/transactions",
-    icon: <ListAltIcon fontSize="large" className="my-2 text-blue-600" />,
+    icon: (
+      <ClipboardList
+        size="35"
+        color="#2563eb"
+        fontSize="large"
+        className="my-1"
+      />
+    ),
   },
 ];
