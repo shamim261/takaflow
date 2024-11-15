@@ -51,9 +51,8 @@ export const isValidToken = async (token: string) => {
       token,
       encoder(process.env.JWT_SECRET!)
     );
-    if (payload) {
-      return true;
-    }
+
+    return payload;
   } catch (error) {
     console.log(error);
     return false;
