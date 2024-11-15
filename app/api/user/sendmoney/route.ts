@@ -7,9 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const user = await getUser();
-  const { formData } = await req.json();
-
-  const { number, amount: userAmount, pin } = formData;
+  const { number, amount: userAmount, pin } = await req.json();
 
   const sender = await User.findOne({ phone: user?.phone });
   const receiver = await User.findOne({ phone: number, role: "user" });

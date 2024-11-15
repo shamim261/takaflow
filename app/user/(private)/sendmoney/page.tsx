@@ -31,19 +31,13 @@ const SendMoney = () => {
   });
   const axiosSecure = useAxiosSecure();
 
-  // interface sendMoneyType {
-  //   number: number;
-  //   amount: number;
-  //   pin: number;
-  // }
-
   type sendMoneyType = z.infer<typeof sendMoneyInput>;
   const submitHandler = async (formData: sendMoneyType) => {
     setIsSubmitting(true);
     setError("");
     try {
       const { data } = await axiosSecure.post("/api/user/sendmoney", {
-        formData,
+        ...formData,
       });
       toast.success("Transaction Complete!");
       router.push("/user/dashboard");
