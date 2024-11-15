@@ -12,7 +12,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   const sender = await User.findOne({ phone: user?.phone });
   const receiver = await User.findOne({ phone: number, role: "user" });
   // check the valid receipt
-  if (!receiver || sender?.phone === number) {
+  if (!receiver || receiver?.status === "pending" || sender?.phone === number) {
     return NextResponse.json(
       { error: "Receipt should be a valid user!" },
       { status: 400 }
