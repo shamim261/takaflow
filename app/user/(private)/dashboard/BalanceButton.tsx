@@ -11,7 +11,7 @@ const BalanceButton = () => {
     queryKey: ["balance", trigger],
     queryFn: () => axiosSecure.get("/api/user/getbalance"),
     enabled: trigger,
-    staleTime: 10,
+    staleTime: 0,
   });
 
   const handleBalance = async () => {

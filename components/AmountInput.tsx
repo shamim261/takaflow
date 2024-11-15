@@ -9,6 +9,7 @@ const AmountInput = (props: any) => {
   const { data, error, status } = useQuery({
     queryKey: ["balance"],
     queryFn: () => axiosSecure.get("/api/user/getbalance"),
+    staleTime: 0,
   });
 
   return (
