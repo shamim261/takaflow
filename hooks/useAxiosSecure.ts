@@ -1,15 +1,17 @@
+"use client";
+import { selectorStateType } from "@/types";
 import axios from "axios";
-import { cookies } from "next/headers";
+import { useSelector } from "react-redux";
 
 const axiosSecure = axios.create({
   baseURL: process.env.BASE_URL,
 });
 
 const useAxiosSecure = () => {
+  const { userInfo } = useSelector((state: selectorStateType) => state.user);
   axiosSecure.interceptors.request.use(
     async (config) => {
-      const cookie = (await cookies()).get(process.env.COOKIE_NAME!);
-      const token = cookie ? JSON.parse(process.env.COOKIE_NAME!) : null;
+      const token = userInfo.token;
 
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
@@ -20,5 +22,6 @@ const useAxiosSecure = () => {
       Promise.reject(error);
     }
   );
+  return axiosSecure;
 };
 export default useAxiosSecure;
