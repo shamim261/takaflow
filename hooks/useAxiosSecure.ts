@@ -11,7 +11,7 @@ const useAxiosSecure = () => {
   const { userInfo } = useSelector((state: selectorStateType) => state.user);
   axiosSecure.interceptors.request.use(
     async (config) => {
-      const token = userInfo.token;
+      const token = userInfo?.token;
 
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
