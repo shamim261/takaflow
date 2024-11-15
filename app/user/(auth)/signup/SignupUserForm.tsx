@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { z } from "zod";
 
 interface Message {
@@ -21,6 +22,7 @@ interface Message {
 
 const SignupUserForm = () => {
   const [error, setError] = useState<string | undefined>("");
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -39,7 +41,6 @@ const SignupUserForm = () => {
         const { data } = await axios.post<Message | ErrorMessage>("/api/user", {
           ...formData,
         });
-        // TODO: add user to global state
         toast.success("Account created! Wait for approval");
         router.push("/user/dashboard");
       } catch (err) {
