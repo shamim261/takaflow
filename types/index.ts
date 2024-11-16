@@ -8,7 +8,7 @@ export interface ErrorMessage {
 export type userLoginType = z.infer<typeof userLoginInput>;
 
 export interface userInfoType {
-  id: string;
+  _id: string;
   name: string;
   email: string;
   phone: string;
