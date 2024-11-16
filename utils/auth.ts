@@ -1,9 +1,6 @@
 import { decodeJwt } from "jose";
 import { cookies } from "next/headers";
 
-const auth = async () => {
-  return null;
-};
 export const getUser = async () => {
   const cookie = (await cookies()).get(process.env.COOKIE_NAME!);
 
@@ -17,7 +14,5 @@ export const getUser = async () => {
       console.log(error);
     }
   }
-  return null;
+  // return null;
 };
-
-export default auth;
