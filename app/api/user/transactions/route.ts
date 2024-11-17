@@ -22,6 +22,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       {
         $match: {
           $or: [
+            // TODO: Fix ts error
             { senderId: new ObjectId(_id) },
             { receiverId: new ObjectId(_id) },
           ],
@@ -81,6 +82,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
             },
           },
         },
+      },
+      {
+        $sort: { updatedAt: -1 },
       },
     ]);
 
