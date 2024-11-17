@@ -121,24 +121,35 @@ const Navbar: React.FC<NavbarProps> = ({ children, user }) => {
                     <User className="mr-2 h-4 w-4" />
                     Profile
                   </Button>
+                  <hr />
+                  <Button
+                    onClick={handleLogOut}
+                    variant="ghost"
+                    className="justify-start"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Log out
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
-          <Image
-            className="md:hidden"
-            src="/logo.png"
-            width={150}
-            height={150}
-            alt="logo"
-          />
+          <Link href="/">
+            <Image
+              className="md:hidden"
+              src="/logo.png"
+              width={150}
+              height={150}
+              alt="logo"
+            />
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Avatar>
                   <AvatarImage src="/placeholder-user.jpg" alt="@user" />
                   <AvatarFallback>
-                    {"Shamim".split(" ")[0].toUpperCase().charAt(0)}
+                    {user?.name.split(" ")[0].toUpperCase().charAt(0)}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -149,7 +160,9 @@ const Navbar: React.FC<NavbarProps> = ({ children, user }) => {
               <DropdownMenuItem onClick={() => router.push("/user/profile")}>
                 Profile
               </DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push("/user/profile")}>
+                Settings
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleLogOut}>
                 <LogOut className="mr-2 h-4 w-4" />
@@ -162,7 +175,9 @@ const Navbar: React.FC<NavbarProps> = ({ children, user }) => {
       <div className="mx-auto my-0 max-w-4xl min-h-[93vh] ">{children}</div>
       <nav className="hidden md:block fixed top-0 left-0 h-full w-64 font-semibold  bg-white dark:bg-gray-800 border-r p-4">
         <div className="flex items-center justify-center mb-8">
-          <Image src="/logo.png" width={200} height={200} alt="logo" />
+          <Link href="/">
+            <Image src="/logo.png" width={200} height={200} alt="logo" />
+          </Link>
         </div>
         <ul className="space-y-2 ">
           <li>
@@ -215,6 +230,18 @@ const Navbar: React.FC<NavbarProps> = ({ children, user }) => {
               </Button>
             </li>
           </Link>
+          <hr className="my-1" />
+
+          <li>
+            <Button
+              onClick={handleLogOut}
+              variant="ghost"
+              className="w-full justify-start"
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Log out
+            </Button>
+          </li>
         </ul>
       </nav>
     </div>
