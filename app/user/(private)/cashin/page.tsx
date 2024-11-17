@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
-import cashInInput from "@/schemas/cashInInput";
+import { cashInInput } from "@/schemas/actionSchema";
 import { ErrorMessage } from "@/types";
 import getError from "@/utils/getError";
 import { zodResolver } from "@hookform/resolvers/zod";

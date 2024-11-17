@@ -1,5 +1,5 @@
 import User from "@/models/userModel";
-import userLoginInput from "@/schemas/userLoginInput";
+import { userLoginInput } from "@/schemas/userSchema";
 import { userLoginType } from "@/types";
 import connectDB from "@/utils/connectDB";
 import { generateToken } from "@/utils/tokenUtils";

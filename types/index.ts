@@ -1,4 +1,4 @@
-import userLoginInput from "@/schemas/userLoginInput";
+import { userLoginInput } from "@/schemas/userSchema";
 import { z } from "zod";
 
 export interface ErrorMessage {

@@ -3,7 +3,7 @@ import ErrorComponent from "@/components/ErrorComponent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import addUserInput from "@/schemas/addUserInput";
+import { addUserInput } from "@/schemas/userSchema";
 import { ErrorMessage } from "@/types";
 import getError from "@/utils/getError";
 import { zodResolver } from "@hookform/resolvers/zod";

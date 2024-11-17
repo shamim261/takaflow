@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { login } from "@/redux/slices/userSlice";
-import updateUserInput from "@/schemas/updateUserInput";
+import { updateUserInput } from "@/schemas/userSchema";
 import { ErrorMessage, selectorStateType } from "@/types";
 import getError from "@/utils/getError";
 import { zodResolver } from "@hookform/resolvers/zod";

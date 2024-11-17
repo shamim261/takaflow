@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login } from "@/redux/slices/userSlice";
-import userLoginInput from "@/schemas/userLoginInput";
+import { userLoginInput } from "@/schemas/userSchema";
 import { ErrorMessage, userLoginType } from "@/types";
 import getError from "@/utils/getError";
 import { zodResolver } from "@hookform/resolvers/zod";
