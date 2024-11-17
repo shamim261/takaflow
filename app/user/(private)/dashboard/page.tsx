@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 
 import { Banknote, CirclePlus, ClipboardList, SendIcon } from "lucide-react";
 import Link from "next/link";
+import TransactionsTable from "../../../../components/TransactionsTable";
 import BalanceButton from "./BalanceButton";
 
 export default function Dashboard() {
@@ -30,30 +30,19 @@ export default function Dashboard() {
           </Card>
 
           {/* Recent Transactions */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Recent Transactions</CardTitle>
+          <Card className="!font-signika">
+            <CardHeader className="font-semibold">
+              <div className="flex justify-between ">
+                <p className="text-xl">Recent Transactions</p>
+                <Link
+                  href="/user/transactions"
+                  className="text-blue-600 underline"
+                >
+                  See more..
+                </Link>
+              </div>
             </CardHeader>
-            <CardContent>
-              <ul className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <li key={i} className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <Avatar>
-                        <AvatarFallback>{i}</AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <p className="font-medium">Transaction {i}</p>
-                        <p className="text-sm text-gray-500">
-                          2023-06-{10 + i}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="font-medium">-$10{i}.00</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
+            <TransactionsTable visible={4} />
           </Card>
         </div>
       </main>

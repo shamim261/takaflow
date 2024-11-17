@@ -21,6 +21,7 @@ const AmountInput = (props: any) => {
         required
         {...props}
         id="amount"
+        step="0.01"
         placeholder="0"
         type="number"
         className=" text-blue-600 py-12 px-4 bg-slate-100 shadow-md rounded-xl text-center font-semibold text-2xl focus:border-none relative placeholder:font-normal"
