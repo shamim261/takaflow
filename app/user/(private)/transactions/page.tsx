@@ -16,8 +16,11 @@ const Transactions = () => {
   return status === "pending" ? (
     "Loading..."
   ) : (
-    <div className="max-w-4xl mx-auto font-signika">
+    <div className="max-w-4xl mx-auto font-signika my-3">
       <div className="divide-y">
+        <h1 className="text-center text-2xl font-semibold text-blue-600 my-2">
+          Recent Transactions
+        </h1>
         {/* TODO: Fix ts error  */}
         {transactions?.map((transaction) => (
           <div
