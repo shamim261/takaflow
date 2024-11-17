@@ -6,7 +6,7 @@ import { Label } from "./ui/label";
 const AmountInput = (props: any) => {
   const axiosSecure = useAxiosSecure();
 
-  const { data, error, status } = useQuery({
+  const { data, error, isLoading } = useQuery({
     queryKey: ["balance"],
     queryFn: () => axiosSecure.get("/api/user/getbalance"),
     staleTime: 0,
@@ -28,12 +28,12 @@ const AmountInput = (props: any) => {
       />
       <p className="justify-center items-center flex">
         Available Balance:
-        {status === "pending" ? (
+        {isLoading ? (
           <Skeleton className="mx-1 inline-block w-12 h-5" />
         ) : (
           <span className="font-bold">
             <span className="font-black text-md font-signika"> ৳</span>
-            {data?.data}
+            {data?.data.toFixed(2)}
           </span>
         )}
       </p>
