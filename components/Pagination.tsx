@@ -31,6 +31,9 @@ const Pagination = ({
     Math.max(0, currentPage - 1 - pageNumLimit),
     Math.min(currentPage - 1 + pageNumLimit + 1, pageNumbers.length)
   );
+  if (activePages.length <= 1) {
+    return null;
+  }
 
   // Function to render page numbers with ellipsis
   const renderPages = () => {
