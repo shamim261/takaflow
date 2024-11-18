@@ -33,14 +33,26 @@ export async function middleware(req: NextRequest) {
   if (!isLoggedIn && pathname !== "/") {
     return NextResponse.redirect(new URL("/", req.url));
   }
+  const forUser = ["/agent/", "/admin/"];
+  const forAgent = ["/user/", "/admin/"];
+  const forAdmin = ["/user/", "/agent/"];
 
-  if (role === "user" && pathname !== "/user/dashboard") {
+  if (
+    role === "user" &&
+    forUser.some((prefix) => pathname.startsWith(prefix))
+  ) {
     return NextResponse.redirect(new URL("/user/dashboard", req.url));
   }
-  if (role === "agent" && pathname !== "/agent/dashboard") {
+  if (
+    role === "agent" &&
+    forAgent.some((prefix) => pathname.startsWith(prefix))
+  ) {
     return NextResponse.redirect(new URL("/agent/dashboard", req.url));
   }
-  if (role === "admin" && pathname !== "/admin/") {
+  if (
+    role === "admin" &&
+    forAdmin.some((prefix) => pathname.startsWith(prefix))
+  ) {
     return NextResponse.redirect(new URL("/admin/dashboard", req.url));
   }
 
