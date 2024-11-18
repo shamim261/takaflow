@@ -46,7 +46,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       amount: amount + fee,
     });
     await transaction.save();
-    // TODO: Complete the transaction
     return NextResponse.json(
       { success: "Transaction created successfully!" },
       { status: 200 }

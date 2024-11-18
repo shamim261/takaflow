@@ -23,7 +23,7 @@ const Transactions = () => {
         <h1 className="text-center text-2xl font-semibold text-blue-600 my-2">
           Recent Transactions
         </h1>
-        {/* TODO: Fix ts error  */}
+
         <TransactionsTable />
       </div>
     </Card>

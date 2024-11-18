@@ -20,3 +20,17 @@ export interface userInfoType {
 export interface selectorStateType {
   user: { userInfo: userInfoType };
 }
+
+export interface Transaction {
+  amount: number;
+  fee: number;
+  receiverId: string;
+  receiverPhone: string;
+  senderId: string;
+  senderPhone: string;
+  status: "rejected" | "pending" | "approved";
+  type: "send_money" | "cash_in" | "cash_out";
+  userSpecificType: string;
+  _id: string;
+  updatedAt: string;
+}

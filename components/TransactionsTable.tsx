@@ -3,6 +3,7 @@ import TransactionsSkeleton from "@/components/TransactionsSkeleton";
 import { Avatar } from "@/components/ui/avatar";
 
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import { Transaction } from "@/types";
 import { Badge } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import { Store, User } from "lucide-react";
@@ -40,7 +41,7 @@ const TransactionsTable = ({ visible }: Props) => {
         <p>No transactions found!</p>
       ) : (
         <>
-          {currentItem?.map((transaction) => (
+          {currentItem?.map((transaction: Transaction) => (
             <div
               key={transaction._id}
               className="flex items-center py-4 px-4 hover:bg-muted/50"

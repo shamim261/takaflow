@@ -2,8 +2,13 @@ import Transaction from "@/models/transactionModel";
 import User from "@/models/userModel";
 import connectDB from "@/utils/connectDB";
 import { decodeJwt } from "jose";
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
+
+export interface MatchCond {
+  $or: [{ senderId: Types.ObjectId }, { receiverId: Types.ObjectId }];
+  status?: string | undefined;
+}
 
 export async function GET(req: NextRequest, res: NextResponse) {
   const status = req.nextUrl.searchParams.get("status");
@@ -11,7 +16,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const authHeader = req.headers.get("Authorization");
   const token = authHeader?.split(" ")[1];
 
-  const { _id, phone } = decodeJwt(token!);
+  const { _id } = decodeJwt(token!);
+  const userId = _id as string;
 
   if (!_id) {
     return NextResponse.json({ error: "token not found!" }, { status: 400 });
@@ -21,12 +27,12 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
   try {
     await connectDB();
-    const matchedCond = {
+    const matchedCond: MatchCond = {
       $or: [
-        // TODO: Fix ts error
-        { senderId: new ObjectId(_id) },
-        { receiverId: new ObjectId(_id) },
+        { senderId: new ObjectId(userId) },
+        { receiverId: new ObjectId(userId) },
       ],
+      status: status === "pending" ? "pending" : undefined,
     };
     if (status && status === "pending") {
       matchedCond.status = "pending";
@@ -72,7 +78,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         $addFields: {
           userSpecificType: {
             $cond: {
-              if: { $eq: ["$senderId", new ObjectId(_id)] },
+              if: { $eq: ["$senderId", new ObjectId(userId)] },
               then: {
                 $cond: {
                   if: { $eq: ["$type", "send_money"] },

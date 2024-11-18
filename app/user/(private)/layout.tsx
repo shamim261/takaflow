@@ -4,7 +4,10 @@ import { PropsWithChildren } from "react";
 
 const Layout = async ({ children }: PropsWithChildren) => {
   const info = await getUser();
-  // TODO: Fix ts error
+
+  if (!info) {
+    return null;
+  }
 
   return <Navbar user={info}>{children}</Navbar>;
 };

@@ -1,3 +1,4 @@
+import { userInfoType } from "@/types";
 import { decodeJwt } from "jose";
 import { cookies } from "next/headers";
 
@@ -8,7 +9,7 @@ export const getUser = async () => {
 
   if (token) {
     try {
-      const payload = decodeJwt(token);
+      const payload: userInfoType = decodeJwt(token);
       return payload;
     } catch (error) {
       console.log(error);

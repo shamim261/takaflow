@@ -15,18 +15,19 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
 
   const ObjectId = mongoose.Types.ObjectId;
+  const userId = _id as string;
+  const matchCond = {
+    $or: [
+      { senderId: new ObjectId(userId) },
+      { receiverId: new ObjectId(userId) },
+    ],
+  };
 
   try {
     await connectDB();
     const result = await Transaction.aggregate([
       {
-        $match: {
-          $or: [
-            // TODO: Fix ts error
-            { senderId: new ObjectId(_id) },
-            { receiverId: new ObjectId(_id) },
-          ],
-        },
+        $match: matchCond,
       },
       // Lookup for sender's phone
       {
@@ -64,7 +65,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         $addFields: {
           userSpecificType: {
             $cond: {
-              if: { $eq: ["$senderId", new ObjectId(_id)] },
+              if: { $eq: ["$senderId", new ObjectId(userId)] },
               then: {
                 $cond: {
                   if: { $eq: ["$type", "send_money"] },
