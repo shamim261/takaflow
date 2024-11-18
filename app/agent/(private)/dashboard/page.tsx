@@ -68,14 +68,14 @@ const cards = [
 
   {
     label: "Cash In",
-    link: "/user/cashin",
+    link: "/agent/cashin",
     icon: (
       <CirclePlus size="35" color="#2563eb" fontSize="large" className="my-1" />
     ),
   },
   {
     label: "Transaction History",
-    link: "/user/transactions",
+    link: "/agent/transactions",
     icon: (
       <ClipboardList
         size="35"
