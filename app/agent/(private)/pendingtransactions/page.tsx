@@ -15,6 +15,7 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import { Transaction } from "@/types";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Store, User } from "lucide-react";
 import { useState } from "react";
@@ -67,7 +68,7 @@ const TransactionsTable = ({ visible }: Props) => {
         <p className="m-5 font-medium text-xl">No transactions found!</p>
       ) : (
         <>
-          {currentItem?.map((transaction) => (
+          {currentItem?.map((transaction: Transaction) => (
             <div
               key={transaction._id}
               className="flex font-signika items-center py-4 px-4 hover:bg-muted/50"
