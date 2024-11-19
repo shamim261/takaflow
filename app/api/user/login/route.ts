@@ -21,6 +21,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     await connectDB();
     const user = await User.findOne({
       $or: [{ email: email }, { phone: email }],
+      role: "user",
     });
     if (user) {
       const isMatch = await bcrypt.compare(pin, user.hashedPin);
