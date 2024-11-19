@@ -1,4 +1,3 @@
-import TransactionsTable from "@/components/TransactionsTable";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ArrowDownRight,
@@ -8,6 +7,7 @@ import {
   UserPlus,
   Users,
 } from "lucide-react";
+import TransactionsTable from "../transactions/TransactionTable";
 
 const Dashboard = () => {
   // Mock data for statistics

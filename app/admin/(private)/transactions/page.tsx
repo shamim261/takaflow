@@ -1,5 +1,5 @@
-import TransactionsTable from "@/components/TransactionsTable";
 import { Card } from "@/components/ui/card";
+import TransactionsTable from "./TransactionTable";
 
 const Transactions = () => {
   return (
