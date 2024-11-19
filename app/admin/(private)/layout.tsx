@@ -7,7 +7,11 @@ const Layout = async ({ children }: PropsWithChildren) => {
   //   return null;
   // }
 
-  return <Navbar user={info}>{children}</Navbar>;
+  return (
+    <Navbar user={info} className="font-signika">
+      {children}
+    </Navbar>
+  );
 };
 
 export default Layout;

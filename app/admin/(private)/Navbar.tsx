@@ -30,9 +30,10 @@ import { useDispatch } from "react-redux";
 interface NavbarProps {
   children?: React.ReactNode;
   user: userInfoType;
+  className?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ children, user }) => {
+const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const router = useRouter();
@@ -52,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = ({ children, user }) => {
   // const { name } = userInfo;
 
   return (
-    <div className="bg-gray-100">
+    <div className={`bg-gray-100 ${className}`}>
       {/* Header */}
       <header className="!z-50 p-4 bg-white dark:bg-gray-800 shadow-md">
         <div className="flex items-center justify-between md:me-10">
