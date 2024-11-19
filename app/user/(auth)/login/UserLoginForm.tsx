@@ -8,15 +8,18 @@ import { userLoginInput } from "@/schemas/userSchema";
 import { ErrorMessage, userLoginType } from "@/types";
 import getError from "@/utils/getError";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Spinner } from "@radix-ui/themes";
 import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 const UserLoginForm = () => {
   const [error, setError] = useState<string | undefined>();
+  const [isSubmitting, setIsSubmitting] = useState<boolean | undefined>(false);
   const {
     register,
     handleSubmit,
@@ -28,6 +31,7 @@ const UserLoginForm = () => {
   const router = useRouter();
 
   const submitHandler: SubmitHandler<userLoginType> = async (formData) => {
+    setIsSubmitting(true);
     setError("");
     try {
       const { data } = await axios.post("/api/user/login", {
@@ -47,6 +51,7 @@ const UserLoginForm = () => {
         token: data.token,
       };
       dispatch(login({ ...userObject }));
+      toast.success("Logged in successfully!");
       router.push("/user/dashboard");
     } catch (err) {
       console.log(err);
@@ -54,6 +59,8 @@ const UserLoginForm = () => {
         const error = err as AxiosError<ErrorMessage>;
         setError(getError(error));
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -87,13 +94,17 @@ const UserLoginForm = () => {
         <ErrorComponent error={errors.pin?.message} />
         <ErrorComponent error={error} />
       </div>
-      <Button type="submit" size={"lg"} className="w-full">
-        Login
+      <Button
+        disabled={isSubmitting}
+        type="submit"
+        size={"lg"}
+        className="w-full"
+      >
+        {isSubmitting && <Spinner size="3" />} Login
       </Button>
       <p className="text-center text-lg">
         New user?
         <Link href={"/user/signup"} className="text-blue-500 underline">
-          {" "}
           Register Here
         </Link>
       </p>

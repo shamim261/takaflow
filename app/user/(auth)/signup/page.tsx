@@ -12,7 +12,7 @@ const Signup = async () => {
     <div className="font-signika  my-4 md:max-w-xl md:mx-auto">
       <Toaster />
       <h1 className="text-center my-2 text-blue-600 font-bold text-3xl">
-        REGISTRATION
+        USER REGISTRATION
       </h1>
       <SignupUserForm />
     </div>
