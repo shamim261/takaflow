@@ -5,9 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   const userInfo = await getUser();
-  // if (userInfo?.role !== "admin") {
-  //   return NextResponse.json({ error: "Unauthorized!" }, { status: 401 });
-  // }
+  if (!userInfo?.isAdmin) {
+    return NextResponse.json({ error: "Unauthorized!" }, { status: 401 });
+  }
 
   try {
     await connectDB();
@@ -27,9 +27,9 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
 export const PATCH = async (req: NextRequest, res: NextResponse) => {
   const { id, action } = await req.json();
   const userInfo = await getUser();
-  // if (userInfo?.role !== "admin") {
-  //   return NextResponse.json({ error: "Unauthorized!" }, { status: 401 });
-  // }
+  if (!userInfo?.isAdmin) {
+    return NextResponse.json({ error: "Unauthorized!" }, { status: 401 });
+  }
 
   try {
     await connectDB();
