@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema<IUser, modelType>(
     status: {
       type: String,
       required: true,
-      enum: ["active", "pending"],
+      enum: ["active", "pending", "blocked"],
       default: "pending",
     },
     role: {
