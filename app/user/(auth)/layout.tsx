@@ -65,19 +65,24 @@ const Layout = ({ children }: PropsWithChildren) => {
               </SheetContent>
             </Sheet>
           </div>
-          <Image
-            className="md:hidden ml-20"
-            src="/logo.png"
-            width={150}
-            height={150}
-            alt="logo"
-          />
+          <Link href={"/"}>
+            {" "}
+            <Image
+              className="md:hidden ml-20"
+              src="/logo.png"
+              width={150}
+              height={150}
+              alt="logo"
+            />
+          </Link>
         </div>
       </header>
       <div className="mx-auto my-0 max-w-4xl min-h-[93vh] ">{children}</div>
       <nav className="hidden md:block fixed top-0 left-0 h-full w-64 font-semibold  bg-white dark:bg-gray-800 border-r p-4">
         <div className="flex items-center justify-center mb-8">
-          <Image src="/logo.png" width={200} height={200} alt="logo" />
+          <Link href="/">
+            <Image src="/logo.png" width={200} height={200} alt="logo" />
+          </Link>
         </div>
         <ul className="space-y-2 ">
           <li>

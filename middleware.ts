@@ -31,7 +31,7 @@ export async function middleware(req: NextRequest) {
   }
   // Prevent redirect loops by checking the current path
   if (!isLoggedIn && pathname !== "/") {
-    return NextResponse.redirect(new URL("/", req.url));
+    return NextResponse.redirect(new URL("/user/login", req.url));
   }
   const forUser = ["/agent/", "/admin/"];
   const forAgent = ["/user/", "/admin/"];

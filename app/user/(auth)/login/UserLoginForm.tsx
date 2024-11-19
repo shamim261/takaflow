@@ -105,6 +105,7 @@ const UserLoginForm = () => {
       <p className="text-center text-lg">
         New user?
         <Link href={"/user/signup"} className="text-blue-500 underline">
+          {" "}
           Register Here
         </Link>
       </p>
