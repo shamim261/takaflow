@@ -23,3 +23,30 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     );
   }
 };
+
+export const PATCH = async (req: NextRequest, res: NextResponse) => {
+  const { id, action } = await req.json();
+  const userInfo = await getUser();
+  // if (userInfo?.role !== "admin") {
+  //   return NextResponse.json({ error: "Unauthorized!" }, { status: 401 });
+  // }
+
+  try {
+    await connectDB();
+    const data = await User.findByIdAndUpdate(
+      id,
+      { status: action },
+      { new: true }
+    );
+    if (!data) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+    return NextResponse.json(data);
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+};
