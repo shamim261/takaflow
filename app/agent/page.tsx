@@ -5,9 +5,9 @@ const page = async () => {
   const isLoggedIn = await isAuth();
 
   if (!isLoggedIn) {
-    redirect("user/login");
+    redirect("agent/login");
   } else {
-    redirect("user/dashboard");
+    redirect("agent/dashboard");
   }
   return <div>Hello World</div>;
 };
