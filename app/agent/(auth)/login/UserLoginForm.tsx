@@ -37,7 +37,6 @@ const UserLoginForm = () => {
       const { data } = await axios.post("/api/agent/login", {
         ...formData,
       });
-      console.log(data);
 
       if (data.status === "pending") {
         setError("Your account is still pending!");

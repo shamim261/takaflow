@@ -113,7 +113,7 @@ export async function PATCH(req: NextRequest, res: NextResponse) {
       maxAge: 604800, // 7 days
       httpOnly: true,
     });
-    console.log("Logged In successfully!");
+
     return response;
   } catch (err) {
     return NextResponse.json(

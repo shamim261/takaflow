@@ -53,8 +53,6 @@ const Users = () => {
   }
 
   const updateStatus = async (id: string, action: string) => {
-    console.log("trigered");
-
     try {
       const data = await axiosSecure.patch("/api/admin/users", {
         id,
