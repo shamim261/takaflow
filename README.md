@@ -18,6 +18,27 @@ TakaFlow is a financial service application built with Next.js and TypeScript. I
 - **Data Validation**: Ensured with react-hook-form and Zod.
 - **Transaction Management**: Send money, cash-in, cash-out, and view transaction history.
 
+## Live Demo
+
+Check out the live version of TakaFlow: [TakaFlow Live](https://takaflow.vercel.app)
+
+## Default Credentials
+
+### Admin
+
+- **Email:** admin@admin.com
+- **PIN:** 12345
+
+### User
+
+- **Email:** user@user.com
+- **PIN:** 12345
+
+### Agent
+
+- **Email:** agent@agent.com
+- **PIN:** 12345
+
 ## Tech Stack
 
 ### Frontend
