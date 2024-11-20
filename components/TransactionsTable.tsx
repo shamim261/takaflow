@@ -30,7 +30,7 @@ const TransactionsTable = ({ visible }: Props) => {
   let transactions;
 
   visible
-    ? (transactions = data?.data?.result.slice(0, visible))
+    ? (transactions = data?.data?.result?.slice(0, visible))
     : (transactions = data?.data?.result);
 
   return (

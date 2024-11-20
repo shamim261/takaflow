@@ -22,6 +22,7 @@ export const POST = async (req: NextRequest) => {
       { status: 400 }
     );
   }
+
   // check the minimum amount
   const minimumAmount = 10;
   const amount = Number(userAmount);
@@ -32,6 +33,13 @@ export const POST = async (req: NextRequest) => {
     );
   }
 
+  if (sender.balance < amount) {
+    // check the balance
+    return NextResponse.json(
+      { error: "Insufficient Balance!" },
+      { status: 400 }
+    );
+  }
   // check pin
   const isMatch = await bcrypt.compare(pin, sender.hashedPin);
   if (!isMatch) {
