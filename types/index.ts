@@ -22,6 +22,7 @@ export interface selectorStateType {
 }
 
 export interface Transaction {
+  trxID: string;
   amount: number;
   fee: number;
   receiverId: string;

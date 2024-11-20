@@ -13,6 +13,9 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     await connectDB();
     const statistics = await Transaction.aggregate([
       {
+        $match: { status: "approved" },
+      },
+      {
         $group: {
           _id: null,
           totalTransaction: { $sum: "$amount" },

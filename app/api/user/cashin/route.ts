@@ -2,6 +2,7 @@ import Transaction, { ITransaction } from "@/models/transactionModel";
 import User from "@/models/userModel";
 import { getUser } from "@/utils/auth";
 import connectDB from "@/utils/connectDB";
+import generateID from "@/utils/generateID";
 import bcrypt from "bcrypt";
 import { HydratedDocument } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
@@ -39,6 +40,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   const fee = 0;
   try {
     const transaction: HydratedDocument<ITransaction> = new Transaction({
+      trxID: generateID(),
       senderId: sender._id,
       receiverId: receiver._id,
       type: "cash_out",

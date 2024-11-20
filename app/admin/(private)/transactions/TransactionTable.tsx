@@ -91,6 +91,9 @@ const TransactionsTable = ({ visible }: Props) => {
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground truncate">
+                  TrxID: {transaction.trxID}
+                </p>
+                <p className="text-sm text-muted-foreground truncate">
                   Sender: {transaction.senderPhone}
                 </p>
                 <p className="text-sm text-muted-foreground truncate">

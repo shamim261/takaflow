@@ -1,6 +1,7 @@
 import mongoose, { Types } from "mongoose";
 
 export interface ITransaction {
+  trxID: string;
   type: "send_money" | "cash_out" | "cash_in";
   senderId: Types.ObjectId;
   receiverId: Types.ObjectId;
@@ -11,6 +12,7 @@ export interface ITransaction {
 
 const transactionSchema = new mongoose.Schema<ITransaction>(
   {
+    trxID: { type: String, required: true, unique: true },
     senderId: { type: mongoose.Schema.Types.ObjectId, required: true },
     receiverId: { type: mongoose.Schema.Types.ObjectId, required: true },
     type: {

@@ -43,7 +43,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
           receiverDetails: 0,
         },
       },
-    ]);
+    ]).sort({ updatedAt: -1 });
     return NextResponse.json(transactions);
   } catch (err) {
     console.log(err);
