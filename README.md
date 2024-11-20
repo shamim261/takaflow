@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TakaFlow
 
-## Getting Started
+TakaFlow is a financial service application built with Next.js and TypeScript. It provides a secure and efficient platform for financial transactions with custom authentication and role-based access control.
 
-First, run the development server:
+## Features
+
+### User Roles
+
+1. **Admin**: Manages users, monitors the system, and oversees transactions.
+2. **User**: Conducts transactions such as sending money, cash-out, and balance inquiries.
+3. **Agent**: Handles cash-in and cash-out requests for users.
+
+### Key Functionalities
+
+- **Authentication**: Secure login and registration with JWT and bcrypt for encryption.
+- **Role-Based Access**: Admin, User, and Agent roles with specific capabilities.
+- **State Management**: Powered by Redux Toolkit.
+- **Data Validation**: Ensured with react-hook-form and Zod.
+- **Transaction Management**: Send money, cash-in, cash-out, and view transaction history.
+
+## Tech Stack
+
+### Frontend
+
+- **Framework**: [Next.js](https://nextjs.org/) (v15.0.3)
+- **State Management**: [Redux-toolkit](https://redux-toolkit.js.org/)
+- **Data Fetching and Caching**: [TanStack Query](https://tanstack.com/query/latest)
+- **Form Data Manpulation**: [React-Hook-Form and Zod]("")
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.dev/), [Radix UI](https://www.radix-ui.com/)
+
+### Backend
+
+- **Database**: MongoDB (via Mongoose ORM)
+- **Authentication**: Custom implementation with JWT and bcrypt
+- **Validation**: Zod for secure data handling
+
+## Installation
+
+### Prerequisites
+
+- Node.js (>= 18.x)
+- MongoDB (local or cloud)
+
+### Steps
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/shamim261/takaflow.git
+   cd takaflow
+   ```
+
+   Install dependencies:
+
+   ```bash
+   npm install --force # force for react 19 peer-deps issue
+   ```
+
+2. Configure environment variables: Create a .env file in the root directory:
+
+```bash
+NODE_ENV=dev
+YOUR_MONGODB_CONNECTION_STRING=
+JWT_SECRET=
+COOKIE_NAME=
+BASE_URL=http://localhost:3000
+DEFAULT_LOGIN_PAGE=
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Visit the application: Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Authentication
 
-## Learn More
+- Users, Agents, and Admins log in using their credentials.
+  JWT is used for secure session management.
 
-To learn more about Next.js, take a look at the following resources:
+### Dashboard
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Role-specific dashboards provide tailored views and actions.
+  Responsive design for desktop and mobile.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Transactions
 
-## Deploy on Vercel
+- Users can send money, cash-in, and cash-out securely.
+- Admins can monitor all system activities.
+- Agents manage user transactions effectively.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For queries, feel free to reach out at **mdshamimreza5552@gmail.com**.
