@@ -1,18 +1,17 @@
+import QueryProvider from "@/providers/QueryProvider";
+import ReduxProvider from "@/providers/ReduxProvider";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Signika } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const signika = Signika({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-signika",
 });
 
 export const metadata: Metadata = {
@@ -27,10 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Theme>{children}</Theme>
+      <body className={`${signika.variable} !font-signika antialiased`}>
+        <Toaster />
+        <ReduxProvider>
+          <QueryProvider>
+            <Theme>{children}</Theme>
+          </QueryProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
