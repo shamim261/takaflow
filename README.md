@@ -28,16 +28,19 @@ Check out the live version of TakaFlow: [TakaFlow Live](https://takaflow.vercel.
 
 - **Email:** admin@admin.com
 - **PIN:** 12345
+- **Path:** /admin/login
 
 ### User
 
 - **Email:** user@user.com
 - **PIN:** 12345
+- **Path:** /user/login
 
 ### Agent
 
 - **Email:** agent@agent.com
 - **PIN:** 12345
+- **Path:** /agent/login
 
 ## Tech Stack
 
