@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   try {
     const response = new NextResponse("Logged Out Successfully!");
     response.cookies.delete(process.env.COOKIE_NAME!);

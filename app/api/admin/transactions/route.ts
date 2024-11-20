@@ -3,7 +3,7 @@ import { getUser } from "@/utils/auth";
 import connectDB from "@/utils/connectDB";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: NextRequest, res: NextResponse) => {
+export const GET = async (req: NextRequest) => {
   const userInfo = await getUser();
   if (!userInfo?.isAdmin) {
     return NextResponse.json({ error: "Unauthorized!" }, { status: 401 });

@@ -21,11 +21,7 @@ import { Store, User } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-interface Props {
-  visible?: number | undefined;
-}
-
-const TransactionsTable = ({ visible }: Props) => {
+const TransactionsTable = () => {
   const [globalError, setError] = useState<string | undefined>();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(8);
@@ -41,11 +37,10 @@ const TransactionsTable = ({ visible }: Props) => {
   const firstItemIndex = lastItemIndex - itemsPerPage;
   const currentItem = data?.data?.result.slice(firstItemIndex, lastItemIndex);
 
-  let transactions;
-
-  visible
-    ? (transactions = data?.data?.result.slice(0, visible))
-    : (transactions = data?.data?.result);
+  // let transactions: Transaction[] =
+  //   visible && visible > 0
+  //     ? data?.data?.result?.slice(0, visible)
+  //     : data?.data?.result || [];
 
   const handleAction = async (id: string, action: string) => {
     try {
@@ -64,7 +59,7 @@ const TransactionsTable = ({ visible }: Props) => {
     <>
       {isLoading ? (
         <TransactionsSkeleton count={4} />
-      ) : transactions?.length === 0 ? (
+      ) : currentItem?.length === 0 ? (
         <p className="m-5 font-medium text-xl">No transactions found!</p>
       ) : (
         <>
@@ -199,7 +194,7 @@ const TransactionsTable = ({ visible }: Props) => {
               </div>
             </div>
           ))}
-          {!visible && (
+          {!currentItem && (
             <Pagination
               postsPerPage={itemsPerPage}
               currentPage={currentPage}

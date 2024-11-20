@@ -4,7 +4,7 @@ import { generateToken } from "@/utils/tokenUtils";
 import brcypt from "bcrypt";
 import { HydratedDocument } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const { name, phone, email, pin } = await req.json();
 
   try {
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   }
 }
 
-export async function PATCH(req: NextRequest, res: NextResponse) {
+export async function PATCH(req: NextRequest) {
   try {
     const { _id, name, email, newPin, pin } = await req.json();
     if (!_id || (!name && !email && !newPin)) {

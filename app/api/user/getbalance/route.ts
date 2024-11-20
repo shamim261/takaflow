@@ -3,7 +3,7 @@ import connectDB from "@/utils/connectDB";
 import { isValidToken } from "@/utils/tokenUtils";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   try {
     const authHeader = req.headers.get("Authorization");
     const token = authHeader?.split(" ")[1];

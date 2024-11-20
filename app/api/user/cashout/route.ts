@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 import { HydratedDocument } from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (req: NextRequest, res: NextResponse) => {
+export const POST = async (req: NextRequest) => {
   await connectDB();
   const user = await getUser();
   const { number, amount: userAmount, pin } = await req.json();

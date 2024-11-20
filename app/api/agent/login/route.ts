@@ -6,7 +6,7 @@ import { generateToken } from "@/utils/tokenUtils";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const { email, pin }: userLoginType = await req.json();
   // data validation
   const validationResult = userLoginInput.safeParse({ email, pin });

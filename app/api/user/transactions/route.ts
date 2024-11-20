@@ -4,7 +4,7 @@ import { decodeJwt } from "jose";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   const authHeader = req.headers.get("Authorization");
   const token = authHeader?.split(" ")[1];
 

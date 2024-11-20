@@ -10,7 +10,7 @@ export interface MatchCond {
   status?: string | undefined;
 }
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   const status = req.nextUrl.searchParams.get("status");
 
   const authHeader = req.headers.get("Authorization");
@@ -112,7 +112,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
 }
 
-export async function PATCH(req: NextRequest, res: NextResponse) {
+export async function PATCH(req: NextRequest) {
   try {
     const { id, action } = await req.json();
 
