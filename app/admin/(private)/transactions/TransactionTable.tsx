@@ -103,7 +103,10 @@ const TransactionsTable = ({ visible }: Props) => {
               <div className="text-right ml-4">
                 <p className={`text-base font-medium `}>
                   {" "}
-                  ৳{transaction.amount.toFixed(2)}
+                  ৳
+                  {transaction.type === "cash_out"
+                    ? (transaction.amount - transaction.fee).toFixed(2)
+                    : transaction.amount.toFixed(2)}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {new Date(transaction.updatedAt).toLocaleString(undefined, {

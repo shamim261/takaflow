@@ -103,7 +103,10 @@ const TransactionsTable = ({ visible }: Props) => {
                   transaction.userSpecificType === "Cash In"
                     ? "+"
                     : "-"}{" "}
-                  ৳{transaction.amount.toFixed(2)}
+                  ৳
+                  {transaction.type === "cash_out"
+                    ? (transaction.amount - transaction.fee).toFixed(2)
+                    : transaction.amount.toFixed(2)}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   {new Date(transaction.updatedAt).toLocaleString(undefined, {
