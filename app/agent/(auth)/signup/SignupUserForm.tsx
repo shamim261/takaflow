@@ -7,6 +7,7 @@ import { addUserInput } from "@/schemas/userSchema";
 import { ErrorMessage } from "@/types";
 import getError from "@/utils/getError";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Spinner } from "@radix-ui/themes";
 import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,6 +23,7 @@ interface Message {
 
 const SignupUserForm = () => {
   const [error, setError] = useState<string | undefined>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const dispatch = useDispatch();
   const {
     register,
@@ -35,6 +37,7 @@ const SignupUserForm = () => {
   type addUserInfer = z.infer<typeof addUserInput>;
 
   const submitHandler: SubmitHandler<addUserInfer> = (formData) => {
+    setIsSubmitting(true);
     setError("");
     async function postData() {
       try {
@@ -51,6 +54,8 @@ const SignupUserForm = () => {
           const error = err as AxiosError<ErrorMessage>;
           setError(getError(error));
         }
+      } finally {
+        setIsSubmitting(false);
       }
     }
     postData();
@@ -111,8 +116,13 @@ const SignupUserForm = () => {
       </div>
       <ErrorComponent error={errors?.pin?.message || ""} />
       <ErrorComponent error={error || ""} />
-      <Button type="submit" size={"lg"} className="w-full">
-        Submit
+      <Button
+        disabled={isSubmitting}
+        type="submit"
+        size={"lg"}
+        className="w-full"
+      >
+        {isSubmitting && <Spinner size="3" />} Submit
       </Button>
       <p className="text-center text-lg">
         Already Registered?
