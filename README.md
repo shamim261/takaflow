@@ -83,12 +83,12 @@ Check out the live version of TakaFlow: [TakaFlow Live](https://takaflow.vercel.
 2. Configure environment variables: Create a .env file in the root directory:
 
 ```bash
-NODE_ENV=dev
-YOUR_MONGODB_CONNECTION_STRING=
+NODE_ENV=
+MONGODB_CONNECTION_STRING=
 JWT_SECRET=
 COOKIE_NAME=
-BASE_URL=http://localhost:3000
-DEFAULT_LOGIN_PAGE=
+BASE_URL=
+DEFAULT_LOGIN_PAGE=/user/login
 ```
 
 3. Start the development server:
