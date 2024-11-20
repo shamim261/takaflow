@@ -97,14 +97,7 @@ const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
                     <ListIcon className="mr-2 h-4 w-4" />
                     All Transaction
                   </Button>
-                  <Button
-                    onClick={() => handleSheetClick("/agent/profile")}
-                    variant="ghost"
-                    className="justify-start"
-                  >
-                    <User className="mr-2 h-4 w-4" />
-                    Profile
-                  </Button>
+
                   <hr />
                   <Button
                     onClick={handleLogOut}
@@ -140,13 +133,6 @@ const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => router.push("/user/profile")}>
-                Profile
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push("/user/profile")}>
-                Settings
-              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={handleLogOut}>
                 <LogOut className="mr-2 h-4 w-4" />
@@ -190,14 +176,6 @@ const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
             </li>
           </Link>
 
-          <Link href={"/admin/profile"}>
-            <li>
-              <Button variant="ghost" className="w-full justify-start">
-                <User className="mr-2 h-4 w-4" />
-                Profile
-              </Button>
-            </li>
-          </Link>
           <hr className="my-1" />
 
           <li>
