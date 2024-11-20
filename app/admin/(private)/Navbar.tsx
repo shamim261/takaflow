@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
                 </SheetHeader>
                 <div className="grid gap-4 py-4">
                   <Button
-                    onClick={() => handleSheetClick("/agent/dashboard")}
+                    onClick={() => handleSheetClick("/admin/dashboard")}
                     variant="ghost"
                     className="justify-start"
                   >
@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
                     Dashboard
                   </Button>
                   <Button
-                    onClick={() => handleSheetClick("/agent/profile")}
+                    onClick={() => handleSheetClick("/admin/users")}
                     variant="ghost"
                     className="justify-start"
                   >
@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
                   </Button>
 
                   <Button
-                    onClick={() => handleSheetClick("/agent/transactions")}
+                    onClick={() => handleSheetClick("/admin/transactions")}
                     variant="ghost"
                     className="justify-start"
                   >

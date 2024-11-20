@@ -115,7 +115,7 @@ const Users = () => {
                             updateStatus(user._id, e.target.value)
                           }
                         >
-                          <option value="active">Approve</option>
+                          <option value="active">Active</option>
                           <option value="pending">Pending</option>
                           <option value="blocked">Block</option>
                         </select>
