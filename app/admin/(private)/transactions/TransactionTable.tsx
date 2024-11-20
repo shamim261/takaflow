@@ -23,7 +23,6 @@ const TransactionsTable = ({ visible }: Props) => {
     queryFn: () => axiosSecure.get(`/api/admin/transactions`),
     staleTime: 0,
   });
-  console.log(data?.data);
 
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;

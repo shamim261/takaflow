@@ -53,8 +53,6 @@ const Users = () => {
   }
 
   const updateStatus = async (id: string, action: string) => {
-    console.log("trigered");
-
     try {
       const data = await axiosSecure.patch("/api/admin/users", {
         id,
@@ -115,7 +113,7 @@ const Users = () => {
                             updateStatus(user._id, e.target.value)
                           }
                         >
-                          <option value="active">Approve</option>
+                          <option value="active">Active</option>
                           <option value="pending">Pending</option>
                           <option value="blocked">Block</option>
                         </select>

@@ -34,7 +34,6 @@ const UserLoginForm = () => {
       const { data } = await axios.post("/api/admin/login", {
         ...formData,
       });
-      console.log(data);
 
       let userObject = {
         _id: data.id,

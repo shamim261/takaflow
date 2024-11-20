@@ -51,7 +51,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
           maxAge: 604800, // 7 days
           httpOnly: true,
         });
-        console.log("Logged In successfully!");
+
         return response;
       } else {
         return NextResponse.json(

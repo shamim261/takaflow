@@ -3,7 +3,7 @@ import TransactionsTable from "./TransactionTable";
 
 const Transactions = () => {
   return (
-    <div className="py-2">
+    <div className="py-2 max-w-sm sm:max-w-7xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-blue-500">
         All Transactions
       </h2>
