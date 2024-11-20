@@ -24,6 +24,16 @@ export async function POST(req: NextRequest) {
       role: "user",
     });
     if (user) {
+      if (user.status === "pending") {
+        return NextResponse.json(
+          { error: "User is still pending!" },
+          { status: 400 }
+        );
+      }
+
+      if (user.status === "blocked") {
+        return NextResponse.json({ error: "You are banned!" }, { status: 400 });
+      }
       const isMatch = await bcrypt.compare(pin, user.hashedPin);
 
       if (isMatch) {
