@@ -22,7 +22,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 interface Props {
-  visible?: number;
+  visible?: number | undefined;
 }
 
 const TransactionsTable = ({ visible }: Props) => {
