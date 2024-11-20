@@ -15,6 +15,7 @@ import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
+import TableSkeleton from "./TableSkeleton";
 
 interface User {
   _id: string;
@@ -68,7 +69,9 @@ const Users = () => {
     }
   };
 
-  return (
+  return isLoading ? (
+    <TableSkeleton />
+  ) : (
     <div className="py-2 px-2">
       <h2 className="text-2xl font-bold mb-4 text-blue-500">User Management</h2>
       <div className="mb-6" id="users">
