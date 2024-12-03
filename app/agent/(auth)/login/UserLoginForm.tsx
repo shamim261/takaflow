@@ -52,7 +52,7 @@ const UserLoginForm = () => {
       };
       dispatch(login({ ...userObject }));
       router.push("/agent/dashboard");
-      toast.success("logged in");
+      toast.success("Logged In Successfully!");
     } catch (err) {
       console.log(err);
       if (err instanceof AxiosError) {
