@@ -38,7 +38,7 @@ const TransactionsTable = ({ visible }: Props) => {
       {isLoading ? (
         <TransactionsSkeleton count={4} />
       ) : transactions?.length === 0 ? (
-        <p>No transactions found!</p>
+        <p className="px-5 pb-4">No transactions found!</p>
       ) : (
         <>
           {currentItem?.map((transaction: Transaction) => (

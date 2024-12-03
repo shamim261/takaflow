@@ -44,7 +44,7 @@ const SignupUserForm = () => {
         const { data } = await axios.post<Message | ErrorMessage>("/api/user", {
           ...formData,
         });
-        toast.success("Account created! Wait for approval");
+        toast.success("Account created! Please Login");
         router.push("/user/login");
       } catch (err) {
         if (err instanceof AxiosError) {

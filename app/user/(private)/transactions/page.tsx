@@ -16,7 +16,9 @@ const Transactions = () => {
   return isLoading ? (
     <TransactionsSkeleton count={8} />
   ) : transactions?.length === 0 ? (
-    <h1>No transactions found</h1>
+    <h1 className="my-5  font-medium text-xl text-center ">
+      No transactions found!
+    </h1>
   ) : (
     <Card className="max-w-2xl mx-auto font-signika rounded-none md:rounded-lg md:my-2">
       <div className="divide-y">

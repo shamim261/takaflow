@@ -47,7 +47,7 @@ const SignupUserForm = () => {
             ...formData,
           }
         );
-        toast.success("Account created! Wait for approval");
+        toast.success("Account created! Please Login");
         router.push("/agent/login");
       } catch (err) {
         if (err instanceof AxiosError) {
