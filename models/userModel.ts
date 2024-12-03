@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema<IUser, modelType>(
       type: String,
       required: true,
       enum: ["active", "pending", "blocked"],
-      default: "pending",
+      default: "active",
     },
     role: {
       type: String,
