@@ -46,7 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ children, user, className }) => {
   const handleLogOut = async () => {
     await axios.get("/api/user/logout");
     dispatch(logout());
-    router.push("/agent/login");
+    router.push("/admin/login");
   };
 
   // const { userInfo } = useSelector((state: selectorStateType) => state.user);
