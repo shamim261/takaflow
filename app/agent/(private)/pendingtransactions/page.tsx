@@ -35,7 +35,7 @@ const TransactionsTable = () => {
   });
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItem = data?.data?.result.slice(firstItemIndex, lastItemIndex);
+  const currentItem = data?.data?.result?.slice(firstItemIndex, lastItemIndex);
 
   // let transactions: Transaction[] =
   //   visible && visible > 0

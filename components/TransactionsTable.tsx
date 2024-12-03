@@ -25,7 +25,7 @@ const TransactionsTable = ({ visible }: Props) => {
   });
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItem = data?.data?.result.slice(firstItemIndex, lastItemIndex);
+  const currentItem = data?.data?.result?.slice(firstItemIndex, lastItemIndex);
 
   let transactions;
 
