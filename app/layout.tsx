@@ -4,7 +4,9 @@ import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Signika } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
+
 import "./globals.css";
 
 const signika = Signika({
@@ -40,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${signika.variable} !font-signika antialiased`}>
+        <NextTopLoader color="#3b82f6" />
         <Toaster />
         <ReduxProvider>
           <QueryProvider>
