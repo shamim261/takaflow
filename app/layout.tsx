@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description:
     "Your trusted Mobile Financial Service provider. Send money, cash out, and manage your finances with ease.",
   icons: { icon: "/favicon.ico" },
+  manifest: "/manifest.json",
   openGraph: {
     title: "TakaFlow - Mobile Financial Service provider",
     description: "Send money, cash out, and manage your finances with ease",
