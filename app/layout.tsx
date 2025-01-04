@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${signika.variable} !font-signika antialiased`}>
-        <NextTopLoader color="#3b82f6" />
+        <NextTopLoader color="#3b82f6" showSpinner={false} />
         <Toaster />
         <ReduxProvider>
           <QueryProvider>
