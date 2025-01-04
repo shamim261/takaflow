@@ -3,11 +3,12 @@ import TransactionsSkeleton from "@/components/TransactionsSkeleton";
 import { Avatar } from "@/components/ui/avatar";
 
 import useAxiosSecure from "@/hooks/useAxiosSecure";
-import { Transaction } from "@/types";
+import { selectorStateType, Transaction } from "@/types";
 import { Badge } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import { Store, User } from "lucide-react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import Pagination from "./Pagination";
 interface Props {
   visible?: number;
@@ -16,6 +17,7 @@ interface Props {
 const TransactionsTable = ({ visible }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(8);
+  const { userInfo } = useSelector((state: selectorStateType) => state.user);
 
   const axiosSecure = useAxiosSecure();
   const { data, isLoading, error } = useQuery({
@@ -93,7 +95,8 @@ const TransactionsTable = ({ visible }: Props) => {
                   className={`text-base font-medium ${
                     transaction.status === "rejected" ||
                     transaction.userSpecificType === "Received Money" ||
-                    transaction.userSpecificType === "Cash In"
+                    (transaction.userSpecificType === "Cash In" &&
+                      userInfo?.role !== "agent")
                       ? "text-green-600"
                       : "text-red-600"
                   }`}

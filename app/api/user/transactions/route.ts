@@ -70,7 +70,13 @@ export async function GET(req: NextRequest) {
                 $cond: {
                   if: { $eq: ["$type", "send_money"] },
                   then: "Sent Money",
-                  else: "Cash Out",
+                  else: {
+                    $cond: {
+                      if: { $eq: ["$type", "cash_in"] }, // New else if condition
+                      then: "Cash In", // New outcome for request_money
+                      else: "Cash Out",
+                    },
+                  },
                 },
               },
               else: {

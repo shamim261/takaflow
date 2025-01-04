@@ -81,7 +81,12 @@ export async function GET(req: NextRequest) {
               if: { $eq: ["$senderId", new ObjectId(userId)] },
               then: {
                 $cond: {
-                  if: { $eq: ["$type", "send_money"] },
+                  if: {
+                    $or: [
+                      { $eq: ["$type", "send_money"] },
+                      { $eq: ["$type", "cash_in"] },
+                    ],
+                  },
                   then: "Sent Money",
                   else: "Cash Out",
                 },
