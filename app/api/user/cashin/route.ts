@@ -43,7 +43,7 @@ export const POST = async (req: NextRequest) => {
       trxID: generateID(),
       senderId: sender._id,
       receiverId: receiver._id,
-      type: "cash_out",
+      type: "cash_in",
       fee: fee,
       amount: amount + fee,
     });
