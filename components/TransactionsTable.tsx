@@ -83,7 +83,8 @@ const TransactionsTable = ({ visible }: Props) => {
                   </Badge>
                 </div>
                 <p className="text-sm text-muted-foreground truncate">
-                  {transaction.userSpecificType === "Cash Out" || "Sent Money"
+                  {transaction.userSpecificType === "Cash Out" ||
+                  transaction.userSpecificType === "Sent Money"
                     ? transaction.receiverPhone
                     : transaction.senderPhone}
                 </p>
