@@ -72,6 +72,13 @@ export async function GET(req: NextRequest) {
                   then: "Sent Money",
                   else: {
                     $cond: {
+                      if: { $eq: ["$type", "cash_in"] },
+                      then: "Cash In",
+                      else: "Cash Out",
+                    },
+                  },
+                  else: {
+                    $cond: {
                       if: { $eq: ["$type", "cash_in"] }, // New else if condition
                       then: "Cash In", // New outcome for request_money
                       else: "Cash Out",

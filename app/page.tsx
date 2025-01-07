@@ -1,12 +1,13 @@
+import Scard from "@/components/Card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ArrowRight,
-  CreditCard,
-  Download,
-  Send,
+  BarChart,
+  Shield,
   Store,
   UserCircle,
+  Zap,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,11 +38,11 @@ export default function HomePage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Welcome to TakaFlow
+                    Your Digital Wallet – Anytime, Anywhere
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                    Your trusted Mobile Financial Service provider. Send money,
-                    cash out, and manage your finances with ease.
+                    Experience a faster, safer, and more convenient way to
+                    manage your money with TakaFlow.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row   ">
@@ -72,7 +73,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section
+        {/* <section
           id="services"
           className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
         >
@@ -116,6 +117,40 @@ export default function HomePage() {
                   <p>Request cash deposits to your TakaFlow account easily.</p>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section> */}
+
+        {/* Our Promise Section */}
+        <section className="bg-gray-100 py-20">
+          <div className="container mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Our Promise to You
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Scard
+                title="Safe & Secure"
+                icon={
+                  <Shield size={32} className="text-[var(--primary-color)]" />
+                }
+              >
+                Industry-standard encryption and authentication for peace of
+                mind.
+              </Scard>
+              <Scard
+                title="Simple & Fast"
+                icon={<Zap size={32} className="text-[var(--primary-color)]" />}
+              >
+                Intuitive design and quick transactions to save you time.
+              </Scard>
+              <Scard
+                title="Reliable & Transparent"
+                icon={
+                  <BarChart size={32} className="text-[var(--primary-color)]" />
+                }
+              >
+                Always know where your money is and what you're paying for.
+              </Scard>
             </div>
           </div>
         </section>
